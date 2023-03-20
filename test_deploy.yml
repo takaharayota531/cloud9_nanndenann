@@ -1,0 +1,26 @@
+name: test and deploy
+
+on:
+  pull request: 
+  jobs: 
+    test: 
+      name: Test
+      runs-on: ubuntu-latest
+      
+      steps:
+        - uses: actions/checkout@v2
+        
+        - uses: ruby/setup-ruby@v1
+          with: 
+            ruby-version: 3.1.2p20
+        
+        - name: Run bundle install
+          run: |
+            bundle config --local path vendor/bundle
+            bundle config --local without production
+            bundle _2.3.14_ install
+            
+        - run: RAILS_ENV=test bundle exec rails assets:precompile
+        
+        - run: bundle exec rails test
+      

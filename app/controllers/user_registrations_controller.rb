@@ -1,2 +1,2 @@
-class UserRegistrationsController < ApplicationController
+# class UserRegistrationsController < ApplicationController
 end

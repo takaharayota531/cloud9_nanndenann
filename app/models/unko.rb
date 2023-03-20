@@ -1,0 +1,2 @@
+class Unko < ApplicationRecord
+end
